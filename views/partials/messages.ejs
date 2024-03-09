@@ -1,0 +1,18 @@
+<% if(typeof err != 'undefined') {%>
+<% err.forEach(function(err){%>
+<%= err.msg   %>
+<%   });  %>
+<%   }  %>
+
+<% if(success_msg!=''){ %>
+<%= success_msg %>
+<% } %>
+
+
+<% if(err_msg!=''){ %>
+<%= err_msg %>
+<% } %>
+
+<% if(error!=''){ %>
+<%= error %>
+<% } %>
