@@ -8,7 +8,8 @@ router.get('/',(req,res)=>{
 
 router.get('/dashboard',ensureAuthenticated,(req,res)=>{
     res.render('dashboard',{
-        name: req.user.Firstname + " "+ req.user.Lastname
+        name: req.user.Firstname + " "+ req.user.Lastname,
+        email: req.user.Email
     });
 })
 
