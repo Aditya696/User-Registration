@@ -2,10 +2,30 @@
     <div class="col-md-6 m-auto">
       <div class="card card-body">
         <h1 class="text-center mb-3">
-          <i class="fas fa-user-plus"></i> Password Change Portal
+          <i class="fas fa-user-plus"></i> User Details Update 
         </h1>
         <%= include ("./partials/messages"); %>
         <form action="/users/updatePassword" method="POST">
+                <div class="form-group">
+                  <label for="fname">First Name</label>
+                  <input
+                    type="fname"
+                    id="fname"
+                    name="fname"
+                    class="form-control"
+                    placeholder="Enter First Name"
+                    value="<%= typeof fname != 'undefined' ? fname : '' %>"
+                  />
+                  <div class="form-group">
+                    <label for="lname">Last Name</label>
+                    <input
+                      type="lname"
+                      id="lname"
+                      name="lname"
+                      class="form-control"
+                      placeholder="Enter Last Name"
+                      value="<%= typeof lname != 'undefined' ? lname : '' %>"
+                    />
         <div class="form-group">
             <label for="email">Email</label>
             <input

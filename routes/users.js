@@ -5,10 +5,13 @@ const bcrypt= require('bcryptjs');
 const passport =require('passport');
 const {ensureAuthenticated}=require('../config/auth');
 
+//Login Page
 router.get('/login',(req,res)=>{
     res.render("login");
 })
 
+
+//Register Page
 router.get('/register',(req,res)=>{
     res.render("register");
 })
@@ -113,11 +116,13 @@ router.get('/delete',(req,res)=>
   res.render('delete');
 });
 
+
+//Delete account method
 router.post('/accountDelete',(req,res,next)=>{
     const {email}=req.body;
     console.log(email);
     passport.authenticate('local',{
-        failureRedirect:'/users/accountDelete',
+        failureRedirect:'/users/delete',
         failureFlash:true
      })(req, res, ()=>{
         
@@ -132,7 +137,7 @@ router.post('/accountDelete',(req,res,next)=>{
         .catch(
             err => {
                 console.error(err);
-                req.flash('error_msg', 'Failed to delete the account');
+                req.flash('err_msg', 'Failed to delete the account');
                 res.redirect('/users/accountDelete');
             }
         )
@@ -152,7 +157,7 @@ router.get('/update',ensureAuthenticated,(req,res)=>
 // Update credentials of user
 router.post('/updatePassword',ensureAuthenticated,(req,res)=>
 {   const err=[];
-    const {email,password1,password2}=req.body;
+    const {fname,lname,email,password1,password2}=req.body;
     console.log(email);
     if(password1.length<5)
     err.push({msg:'Password Smaller than 5 digits'});
@@ -171,7 +176,7 @@ router.post('/updatePassword',ensureAuthenticated,(req,res)=>
         if(err)
         console.log(err);
         
-        userModel.findOneAndUpdate({Email:email},{$set:{Password:hash}})
+        userModel.findOneAndUpdate({Email:email},{$set:{Password:hash,Firstname:fname,Lastname:lname }})
         .then((user)=>{
             
                if(!user)
