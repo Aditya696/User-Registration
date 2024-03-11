@@ -9,7 +9,7 @@
 
    ![image](https://github.com/Aditya696/User-Registration/assets/82080016/ccf0f9b7-f561-4cef-9483-85048fe06944)
 
-4. Metion the url in keys.js file in config folder
+4. Mention the url in keys.js file in config folder
 
    ![image](https://github.com/Aditya696/User-Registration/assets/82080016/1ca74ccc-4d3b-42b2-8458-08bbb0d48694)
 
